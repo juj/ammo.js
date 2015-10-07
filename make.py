@@ -9,7 +9,9 @@ INCLUDES = ['btBulletDynamicsCommon.h', os.path.join('BulletCollision', 'Collisi
 
 # Startup
 
-exec(open(os.path.expanduser('~/.emscripten'), 'r').read())
+em_config = os.environ.get('EM_CONFIG')
+if not em_config: em_config = os.path.expanduser('~/.emscripten')
+exec(open(em_config, 'r').read())
 
 try:
   EMSCRIPTEN_ROOT
