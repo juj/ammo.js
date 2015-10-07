@@ -98,8 +98,7 @@ try:
   if not os.path.exists('config.h'):
     stage('Configure (if this fails, run autogen.sh in bullet/ first)')
 
-  # Configure with CMake on Windows, and with configure on Unix.
-  cmake_build = emscripten.WINDOWS
+  cmake_build = True
 
   if cmake_build:
     emscripten.Building.configure([emscripten.PYTHON, os.path.join(EMSCRIPTEN_ROOT, 'emcmake'), 'cmake', '..', '-DBUILD_DEMOS=OFF', '-DBUILD_EXTRAS=OFF', '-DBUILD_CPU_DEMOS=OFF', '-DUSE_GLUT=OFF', '-DCMAKE_BUILD_TYPE=Release'])
